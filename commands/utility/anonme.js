@@ -16,15 +16,15 @@ module.exports = {
         const channel = interaction.client.channels.cache.get(channelId);
 
         if (!channel) {
-            return interaction.reply({ content: 'Error: Channel not found.', ephemeral: true });
+            return interaction.reply({ content: 'Error: Channel not found.', flags: MessageFlags.Ephemeral });
         }
 
         try {
             await channel.send(message);
-            await interaction.reply({ content: 'Your anonymous message has been sent.', ephemeral: true });
+            await interaction.reply({ content: 'Your anonymous message has been sent.', flags: MessageFlags.Ephemeral});
         } catch (error) {
             console.error('Error sending message:', error);
-            await interaction.reply({ content: 'Failed to send the message.', ephemeral: true });
+            await interaction.reply({ content: 'Failed to send the message.', flags: MessageFlags.Ephemeral });
         }
     },
 };
