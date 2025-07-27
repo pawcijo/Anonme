@@ -21,7 +21,9 @@ module.exports = {
 
         try {
             await channel.send(message);
-            await interaction.reply({ content: 'Your anonymous message has been sent.', flags: MessageFlags.Ephemeral});
+            //await interaction.reply({ content: 'Your anonymous message has been sent.', flags: MessageFlags.Ephemeral});
+            await interaction.deferReply({ ephemeral: true });
+            await interaction.deleteReply();
         } catch (error) {
             console.error('Error sending message:', error);
             await interaction.reply({ content: 'Failed to send the message.', flags: MessageFlags.Ephemeral });
